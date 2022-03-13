@@ -1,27 +1,32 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngxs/store';
-import { Hero, HeroesState } from '@store/heroes';
-import { map, Observable } from 'rxjs';
+import { Hero, HeroesState, UpdateHero } from '@store/heroes';
 
 @Component({
   selector: 'tf-hero',
   templateUrl: './hero.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeroComponent implements OnInit {
-  hero$!: Observable<Hero | undefined>;
+  hero?: Hero;
 
   constructor(
     private readonly route: ActivatedRoute,
-    private readonly store: Store
+    private readonly store: Store,
+    private readonly router: Router
   ) {}
 
   public ngOnInit(): void {
     const params = this.route.snapshot.params as { id: string };
     const id = +params.id;
 
-    this.hero$ = this.store
-      .select(HeroesState.heroById)
-      .pipe(map((byId) => byId(id)));
+    this.hero = this.store.selectSnapshot(HeroesState.heroById)(id);
+  }
+
+  back() {
+    const { id, name } = this.hero!;
+    this.store.dispatch(new UpdateHero(id, name));
+    this.router.navigateByUrl('/');
   }
 }

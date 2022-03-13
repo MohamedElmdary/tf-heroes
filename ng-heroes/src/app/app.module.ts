@@ -2,6 +2,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 // Libs
 import { NgxsModule } from '@ngxs/store';
@@ -35,6 +36,7 @@ import { ListHeroComponent } from './heroes-list/list-hero/list-hero.component';
       { path: '**', redirectTo: '' },
     ]),
     NgxsModule.forRoot([HeroesState]),
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

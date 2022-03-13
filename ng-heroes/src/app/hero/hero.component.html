@@ -1,7 +1,21 @@
-<div *ngIf="hero$ | async as hero">
-  <p>{{ hero | json }}</p>
+<div *ngIf="hero">
+  <h2>{{ hero.name }} Details!</h2>
+
+  <div>
+    <label>ID</label>
+    <br />
+    <input type="text" readonly [value]="hero.id" />
+  </div>
+
+  <div>
+    <label>Name</label>
+    <br />
+    <input type="text" [(ngModel)]="hero.name" />
+  </div>
+
+  <button [disabled]="!hero.name" (click)="back()">Back</button>
 </div>
 
-<div *ngIf="!(hero$ | async)">
-  <p>No Hero was found</p>
+<div *ngIf="!hero">
+  <h2>Hero was not found</h2>
 </div>
