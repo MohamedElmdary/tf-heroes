@@ -1,0 +1,8 @@
+<h2>Top Heroes</h2>
+<div class="dashboard-heroes">
+  <tf-dashboard-hero
+    [routerLink]="'/hero/' + hero.id"
+    *ngFor="let hero of heroes$ | async"
+    [hero]="hero"
+  ></tf-dashboard-hero>
+</div>

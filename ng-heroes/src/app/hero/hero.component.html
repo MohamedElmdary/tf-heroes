@@ -1,0 +1,7 @@
+<div *ngIf="hero$ | async as hero">
+  <p>{{ hero | json }}</p>
+</div>
+
+<div *ngIf="!(hero$ | async)">
+  <p>No Hero was found</p>
+</div>

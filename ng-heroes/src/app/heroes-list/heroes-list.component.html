@@ -1,0 +1,4 @@
+<h2>My Heroes</h2>
+<div *ngFor="let hero of heroes$ | async">
+  <tf-list-hero [hero]="hero" [routerLink]="'/hero/' + hero.id"></tf-list-hero>
+</div>
