@@ -3,7 +3,6 @@
   import { useParams, useNavigate } from "svelte-navigator";
   import { get } from "svelte/store";
   import TfInput from "../components/TfInput.svelte";
-  import { identity } from "svelte/internal";
 
   const params = useParams();
   const navigate = useNavigate();
