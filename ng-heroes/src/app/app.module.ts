@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 // Libs
 import { NgxsModule } from '@ngxs/store';
@@ -17,6 +17,7 @@ import { HeroesDashboardComponent } from './heroes-dashboard/heroes-dashboard.co
 import { HeroesState } from '@store/heroes';
 import { DashboardHeroComponent } from './heroes-dashboard/dashboard-hero/dashboard-hero.component';
 import { ListHeroComponent } from './heroes-list/list-hero/list-hero.component';
+import { InputComponent } from './input/input.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { ListHeroComponent } from './heroes-list/list-hero/list-hero.component';
     HeroesDashboardComponent,
     DashboardHeroComponent,
     ListHeroComponent,
+    InputComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,7 +38,7 @@ import { ListHeroComponent } from './heroes-list/list-hero/list-hero.component';
       { path: '**', redirectTo: '' },
     ]),
     NgxsModule.forRoot([HeroesState]),
-    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

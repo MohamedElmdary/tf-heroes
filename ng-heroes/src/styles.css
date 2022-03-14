@@ -121,3 +121,39 @@ h2 {
   padding: 0 1rem;
   font-size: 1.6rem;
 }
+
+.input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.input > label {
+  font-size: 1.6rem;
+  width: 50px;
+}
+
+.input > input {
+  padding: 1rem 1.5rem;
+  border-radius: 0.5rem;
+}
+
+.back-btn {
+  padding: 1rem 3rem;
+  background-color: #34495e;
+  border-radius: 0.8rem;
+  color: white;
+  font-size: 1.6rem;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.back-btn:hover {
+  color: #3498db;
+}
+
+.back-btn:disabled {
+  color: gray !important;
+  pointer-events: none;
+}

@@ -1,21 +1,16 @@
-<div *ngIf="hero">
-  <h2>{{ hero.name }} Details!</h2>
+<div *ngIf="heroForm; else notFound">
+  <h2>{{ name!.value }} Details!</h2>
 
-  <div>
-    <label>ID</label>
-    <br />
-    <input type="text" readonly [value]="hero.id" />
-  </div>
+  <tf-input [form]="id!"> ID </tf-input>
+  <tf-input [form]="name!"> Name </tf-input>
 
-  <div>
-    <label>Name</label>
-    <br />
-    <input type="text" [(ngModel)]="hero.name" />
-  </div>
-
-  <button [disabled]="!hero.name" (click)="back()">Back</button>
+  <button [disabled]="heroForm.invalid" (click)="back()" class="back-btn">
+    Back
+  </button>
 </div>
 
-<div *ngIf="!hero">
-  <h2>Hero was not found</h2>
-</div>
+<ng-template #notFound>
+  <div>
+    <h2>Hero was not found</h2>
+  </div>
+</ng-template>
