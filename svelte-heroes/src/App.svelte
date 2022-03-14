@@ -1,30 +1,51 @@
 <script lang="ts">
-	export let name: string;
+  import { Router, Route, Link } from "svelte-navigator";
+
+  const routes = [
+    { path: "/", label: "Dashboard" },
+    { path: "/heroes", label: "Heroes" },
+  ];
+
+  let active: string;
+
+  import Dashboard from "./pages/Dashboard/Dashboard.svelte";
+  import Hero from "./pages/Hero.svelte";
+  import HeroesList from "./pages/List/HeroesList.svelte";
 </script>
 
-<main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
-</main>
+<Router>
+  <main id="app-container">
+    <h1>Tour of Heroes</h1>
+    <ul id="navbar">
+      {#each routes as route}
+        <li>
+          <Link
+            class={active === route.path ? "active" : undefined}
+            to={route.path}
+            getProps={(props) => {
+              const { isCurrent, location } = props;
+              if (isCurrent) {
+                active = location.pathname;
+              }
+              return props;
+            }}
+          >
+            {route.label}
+          </Link>
+        </li>
+      {/each}
+    </ul>
 
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
+    <Route path="/">
+      <Dashboard />
+    </Route>
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
+    <Route path="/heroes">
+      <HeroesList />
+    </Route>
 
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
+    <Route path="/hero/:id">
+      <Hero />
+    </Route>
+  </main>
+</Router>
