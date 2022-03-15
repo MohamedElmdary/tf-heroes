@@ -19,7 +19,7 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator";
-import { Hero } from "../store";
+import { Actions, Hero } from "../store";
 import TfInput from "../components/TfInput.vue";
 
 @Component({
@@ -40,7 +40,7 @@ export default class HeroDisplay extends Vue {
   }
 
   back() {
-    this.$store.dispatch("updateHero", this.hero);
+    this.$store.dispatch(Actions.UPDATE_HERO, this.hero);
     this.$router.back();
   }
 }

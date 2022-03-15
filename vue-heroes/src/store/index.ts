@@ -15,6 +15,12 @@ export interface HeroesStateModel {
   topHeroes: TopHeros;
 }
 
+export enum Actions {
+  UPDATE_HERO = "UPDATE_HERO",
+}
+
+type Ctx = ActionContext<HeroesStateModel, HeroesStateModel>;
+
 export default new Vuex.Store<HeroesStateModel>({
   state: {
     heroes,
@@ -32,10 +38,7 @@ export default new Vuex.Store<HeroesStateModel>({
     },
   },
   actions: {
-    updateHero(
-      ctx: ActionContext<HeroesStateModel, HeroesStateModel>,
-      payload: Hero
-    ) {
+    [Actions.UPDATE_HERO](ctx: Ctx, payload: Hero) {
       const idx = ctx.state.heroes.findIndex((hero) => hero.id === payload.id);
       if (idx === -1) {
         ctx.state.heroes[idx].name = payload.name;
