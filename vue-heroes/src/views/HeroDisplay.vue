@@ -4,7 +4,7 @@
       <h2>{{ hero.name }} Details!</h2>
 
       <TfInput label="ID" :value="hero.id.toString()" disabled />
-      <TfInput label="Name" :value="hero.name" @input="hero.name = $event" />
+      <TfInput label="Name" v-model="hero.name" />
 
       <button class="back-btn" :disabled="!hero.name" @click="back()">
         Back
