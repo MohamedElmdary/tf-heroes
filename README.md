@@ -35,3 +35,9 @@ Show the hero details ID(**readonly**) and name(**editable**)
 > NOTE: User can't update name to empty string.
 
 ### ScreenShots
+
+![image](https://user-images.githubusercontent.com/31689104/158558554-676984a5-0399-406b-811b-af14f5ef44bf.png)
+![image](https://user-images.githubusercontent.com/31689104/158558634-c40768d7-5d50-498c-996f-e7fae901d870.png)
+![image](https://user-images.githubusercontent.com/31689104/158558710-cee57fd9-5d9a-4939-bfa3-3234888f6985.png)
+
+
